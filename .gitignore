@@ -1,0 +1,4 @@
+credentials/
+*.cred
+logs/
+*.log
