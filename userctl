@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#setting up the euo to handle error;undefined varibales; pipe failure
+set -euo pipefail
+
+#checking the pwd and dirname of script located
+BASE_DIR="/opt/linux-admin-toolkit"
+
+source "$BASE_DIR/lib/checks.sh"
+source "$BASE_DIR/lib/logger.sh"
+source "$BASE_DIR/lib/password.sh"
+source "$BASE_DIR/lib/validator.sh"
+source "$BASE_DIR/lib/user_create.sh"
+source "$BASE_DIR/lib/user_delete.sh"
+
+#checking if execution user is root; calling the function @BASE_DIR/lib/checks.sh
+check_root
+
+#storing the action{add or delete} with users{list(s)}
+ACTION=${1:-}
+USERS=${2:-}
+
+#running a sw-cases in action of add or delete
+case "$ACTION" in
+
+add) #if the action is add
+
+IFS=',' read -ra USER_LIST <<< "$USERS"
+
+for user in "${USER_LIST[@]}"
+do
+    create_user "$user" #calling the function @@BASE_DIR/lib/user_create.sh
+done
+
+;;
+
+delete) #if the action is delete
+
+IFS=',' read -ra USER_LIST <<< "$USERS"
+
+for user in "${USER_LIST[@]}"
+do
+    delete_user "$user" #calling the function @@BASE_DIR/lib/user_delete.sh
+done
+
+;;
+
+list) #if the action is list
+
+getent passwd | cut -d: -f1
+
+;;
+
+*) #nothing matches
+
+echo "Usage:"
+echo "./userctl add user1,user2"
+echo "./userctl delete user1,user2"
+echo "./userctl list"
+
+;;
+
+esac #completing the sw-cases
