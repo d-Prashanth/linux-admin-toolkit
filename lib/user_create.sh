@@ -24,7 +24,12 @@ echo "$user:$password" | chpasswd
 
 chage -d 0 "$user"
 
-echo "$user : $password" >> .user_credentials
+CRED_FILE="/opt/linux-admin-toolkit/credentials/${user}.cred"
+
+echo "username: $user" > "$CRED_FILE"
+echo "password: $password" >> "$CRED_FILE"
+
+chmod 600 "$CRED_FILE"
 
 log "User created: $user"
 
