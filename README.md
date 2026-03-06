@@ -14,8 +14,8 @@ A modular Bash CLI tool for Linux user management.
 
 ## Commands
 
-userctl add alice,bob
-userctl delete alice
+userctl add user1,user2,user3
+userctl delete user1,user2
 userctl list
 
 ## Project Structure
