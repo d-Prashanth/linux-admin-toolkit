@@ -29,15 +29,15 @@ userctl list
 ## structure
 linux-admin-toolkit
 │
-├── userctl
-├── install.sh
-├── README.md
-├── .gitignore
+- userctl
+- install.sh
+- README.md
+- .gitignore
 │
 ├── lib/
-│   ├── checks.sh
-│   ├── logger.sh
-│   ├── password.sh
-│   ├── user_create.sh
-│   ├── user_delete.sh
-│   └── validator.sh
+- checks.sh
+- logger.sh
+- password.sh
+- user_create.sh
+- user_delete.sh
+- validator.sh
