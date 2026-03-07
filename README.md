@@ -11,9 +11,9 @@ A modular Bash CLI tool for Linux user management automation.
 - Modular Bash architecture
 
 ## Installation
-git clone https://github.com/d-Prashanth/linux-admin-toolkit.git
-cd linux-admin-toolkit
-sudo cp userctl /usr/local/bin/
+- git clone https://github.com/d-Prashanth/linux-admin-toolkit.git
+- cd linux-admin-toolkit
+- sudo cp userctl /usr/local/bin/
 
 ## Usage
 
